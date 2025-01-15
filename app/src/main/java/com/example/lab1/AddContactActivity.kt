@@ -34,6 +34,10 @@ class AddContactActivity : AppCompatActivity() {
     }
 
     private fun validate(contact: Contact): Boolean = with(contact) {
-        return fullName.isNotEmpty() && phoneNumber.isNotEmpty() && email.isNotEmpty()
+        return fullName.isNotEmpty() && validatePhone(phoneNumber) && email.isNotEmpty()
+    }
+
+    private fun validatePhone(phone: String): Boolean {
+        return phone.isNotEmpty() && phone.startsWith("+7") && phone.length == 12
     }
 }
